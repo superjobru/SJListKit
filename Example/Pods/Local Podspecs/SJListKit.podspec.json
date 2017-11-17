@@ -1,0 +1,37 @@
+{
+  "name": "SJListKit",
+  "version": "0.1.0",
+  "summary": "A short description of SJListKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/superjobru/SJListKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Alexander Danilyak": "a.danilyak@superjob.ru"
+  },
+  "source": {
+    "git": "https://github.com/superjobru/SJListKit.git",
+    "tag": "0.1.0"
+  },
+  "social_media_url": "https://twitter.com/adanilyak",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "SJListKit/Classes/**/*",
+  "dependencies": {
+    "IGListKit": [
+      "~> 3.0"
+    ],
+    "RxSwift": [
+      "~> 4.0"
+    ],
+    "RxCocoa": [
+      "~> 4.0"
+    ],
+    "SnapKit": [
+      "~> 4.0"
+    ]
+  }
+}

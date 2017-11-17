@@ -1,0 +1,39 @@
+PODS:
+  - IGListKit (3.1.1):
+    - IGListKit/Default (= 3.1.1)
+  - IGListKit/Default (3.1.1):
+    - IGListKit/Diffing
+  - IGListKit/Diffing (3.1.1)
+  - Nimble (7.0.2)
+  - Quick (1.2.0)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
+  - SJListKit (0.1.0):
+    - IGListKit (~> 3.0)
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+    - SnapKit (~> 4.0)
+  - SnapKit (4.0.0)
+
+DEPENDENCIES:
+  - Nimble (~> 7.0.2)
+  - Quick (~> 1.2.0)
+  - SJListKit (from `../`)
+
+EXTERNAL SOURCES:
+  SJListKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  IGListKit: cb97f405ae43e59fe1da74271e19427ec20d3c07
+  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  SJListKit: 90f8131524c84e2aa47f9c0546d02afa5e44c753
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+
+PODFILE CHECKSUM: 250ca3f0ed731e628d2e7c9e747c94403c2fcd6c
+
+COCOAPODS: 1.4.0.beta.2
