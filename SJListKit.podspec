@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SJListKit'
-  s.version          = '1.0.0'
+  s.version          = '1.1.0'
   s.summary          = 'Handy wrapper for IGListKit'
 
   s.description      = <<-DESC
@@ -20,9 +20,10 @@ Main features are:
 
   s.ios.deployment_target = '8.0'
   s.source_files = 'SJListKit/Classes/**/*'
-  
+
   s.dependency 'IGListKit', '~> 3.0'
   s.dependency 'RxSwift',   '~> 4.0'
   s.dependency 'RxCocoa',   '~> 4.0'
   s.dependency 'SnapKit',   '~> 4.0'
+
 end

@@ -20,8 +20,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
-import IGListKit
+// Not the best parctice
+// But it allows to avoid multiple import lines in your code:
+//      import SJListKit
+//      import IGListKit
+// If you need any of original IGListKit API
+@_exported import IGListKit
 import RxSwift
 import RxCocoa
 
