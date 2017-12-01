@@ -43,9 +43,17 @@ public protocol SJUpdateCellsLayoutProtocol: class {
 // MARK: - Implementation of SJUpdateCellsLayoutProtocol for SJListSectionController
 public extension SJUpdateCellsLayoutProtocol where Self: SJListSectionController {
     
-    func updateCellsLayout(animated: Bool) {
-        updateCellsLayout(at: nil, animated: animated)
-    }
+	func updateCellsLayout(animated: Bool) {
+		let indexes =
+			collectionContext?.visibleIndexPaths(for: self).reduce(IndexSet(), { (result, indexPath) -> IndexSet in
+			var set = result
+			set.insert(indexPath.row)
+			return set
+		})
+
+		updateCellsLayout(at: indexes, animated: animated)
+	}
+
 
     func updateCellsLayout(at indexies: IndexSet? = nil, animated: Bool) {
         for cell in self.collectionContext?.visibleCells(for: self) ?? [] {
