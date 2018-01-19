@@ -33,7 +33,7 @@ public struct SJUniversalSupplementaryConfig {
     public var footer: SJSupplementaryItemConfigProtocol?
     
     public init(header: SJSupplementaryItemConfigProtocol? = nil,
-         footer: SJSupplementaryItemConfigProtocol? = nil) {
+                footer: SJSupplementaryItemConfigProtocol? = nil) {
         self.header = header
         self.footer = footer
     }
@@ -46,6 +46,7 @@ public protocol SJSupplementaryItemConfigProtocol {
     
     typealias ConfigBlock = ((UICollectionReusableView) -> Void)
     typealias SizeBlock = ((CGSize) -> SJSupplementarySize)
+    typealias AvailabilityBlock = ((Any) -> Bool)
     
     /// Supplementary type
     var type: UICollectionReusableView.Type { get }
@@ -57,13 +58,22 @@ public protocol SJSupplementaryItemConfigProtocol {
     /// Size block
     var sizeBlock: SizeBlock { get }
     
+    /// Availability block
+    /// Use it for custom logic supplementary display
+    var availabilityBlock: AvailabilityBlock { get }
+    
 }
 
+/// Shortcut & Backward compatibility
+public typealias SJSupplementaryItemConfigGeneric<T: UICollectionReusableView>
+    = SJSupplementaryExtendedItemConfigGeneric<T, Any>
+
 /// Supplementary of a proper type
-public struct SJSupplementaryItemConfigGeneric<T: UICollectionReusableView>: SJSupplementaryItemConfigProtocol {
+public struct SJSupplementaryExtendedItemConfigGeneric<T: UICollectionReusableView, M>: SJSupplementaryItemConfigProtocol {
     
     public typealias ConfigBlock = ((T) -> Void)
     public typealias SizeBlock = ((CGSize) -> SJSupplementarySize)
+    public typealias AvailabilityBlock = ((M) -> Bool)
     
     /// Config block
     public let config: ConfigBlock
@@ -71,10 +81,15 @@ public struct SJSupplementaryItemConfigGeneric<T: UICollectionReusableView>: SJS
     /// Size block
     public let size: SizeBlock
     
+    /// Availability block
+    public let availability: AvailabilityBlock
+    
     public init(config: @escaping ConfigBlock,
-                size: @escaping SizeBlock = { _ in return .autolayout} ) {
+                size: @escaping SizeBlock = { _ in return .autolayout},
+                availability: @escaping AvailabilityBlock = { _ in return true }) {
         self.config = config
         self.size = size
+        self.availability = availability
     }
     
     // MARK: - SJUniversalSupplementaryConfigProtocol
@@ -95,6 +110,16 @@ public struct SJSupplementaryItemConfigGeneric<T: UICollectionReusableView>: SJS
     
     public var sizeBlock: SJSupplementaryItemConfigProtocol.SizeBlock {
         return size
+    }
+    
+    public var availabilityBlock: SJSupplementaryItemConfigProtocol.AvailabilityBlock {
+        return { model in
+            guard let typedModel = model as? M else {
+                return false
+            }
+            
+            return self.availability(typedModel)
+        }
     }
     
 }
