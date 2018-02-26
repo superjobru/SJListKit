@@ -33,7 +33,7 @@ public struct SJUniversalSupplementaryConfig {
     public var footer: SJSupplementaryItemConfigProtocol?
     
     public init(header: SJSupplementaryItemConfigProtocol? = nil,
-         footer: SJSupplementaryItemConfigProtocol? = nil) {
+                footer: SJSupplementaryItemConfigProtocol? = nil) {
         self.header = header
         self.footer = footer
     }

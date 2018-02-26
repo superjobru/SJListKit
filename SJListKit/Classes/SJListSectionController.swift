@@ -74,7 +74,7 @@ open class SJListSectionController: ListSectionController {
 
     /// Returns cell with data
     @objc(cellForItemAtIndex:) final override public func cellForItem(at index: Int) -> UICollectionViewCell {
-        var cell = dequeueCell(at: index)
+        let cell = dequeueCell(at: index)
         configureCell(cell, at: index)
         cell.set(separationStyle: separationStyle(at: index))
         cell.set(separatorColor: separationColor(at: index))
@@ -258,7 +258,7 @@ extension SJListSectionController {
     /// Shortcut for collectionContext
     public var sjcollectionContext: ListCollectionContext {
         guard let context = collectionContext else {
-            fatalError("collectionContext must exist")
+            return SJDummyListCollectionContex()
         }
         return context
     }
