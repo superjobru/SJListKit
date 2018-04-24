@@ -86,6 +86,10 @@ import IGListKit
         return UICollectionReusableView()
     }
     
+    func dequeueReusableCell(of cellClass: AnyClass, withReuseIdentifier reuseIdentifier: String?, for sectionController: ListSectionController, at index: Int) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+    
     func dequeueReusableSupplementaryView(fromStoryboardOfKind elementKind: String, withIdentifier identifier: String, for sectionController: ListSectionController, at index: Int) -> UICollectionReusableView {
         return UICollectionReusableView()
     }

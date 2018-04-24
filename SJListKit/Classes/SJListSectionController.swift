@@ -117,23 +117,25 @@ open class SJListSectionController: ListSectionController {
 
         let initializationType = cellInitializationType(at: index)
 
-        let result: UICollectionViewCell
+        let result: Any?
         switch initializationType {
         case .code:
             result = cellType.init(frame: .zero)
         case .nibFromString(let nibName):
             result = Bundle.main.loadNibNamed(nibName,
                                               owner: self,
-                                              options: nil)?.first as! UICollectionViewCell
+                                              options: nil)?.first
         case .nibFromClass(let type):
             result = Bundle.main.loadNibNamed(type.classNibName,
                                               owner: self,
-                                              options: nil)?.first as! UICollectionViewCell
+                                              options: nil)?.first
         }
 
-        cache.setObject(result, forKey: key)
-
-        return result
+        if let result = result as? UICollectionViewCell {
+            cache.setObject(result, forKey: key)
+            return result
+        }
+        return UICollectionViewCell()
     }
 
     // MARK: - For Override

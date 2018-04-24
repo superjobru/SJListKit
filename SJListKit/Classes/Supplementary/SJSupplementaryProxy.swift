@@ -119,6 +119,12 @@ public class SJSupplementaryProxy: NSObject {
 extension SJSupplementaryProxy: ListSupplementaryViewSource {
     
     public func supportedElementKinds() -> [String] {
+        
+        ///If context is nil method dequeueReusableSupplementaryView always crash 
+        guard context != nil else {
+            return []
+        }
+        
         var kinds: [String] = []
         
         if delegate?.type(for: .footer) != nil {
