@@ -60,6 +60,15 @@ public protocol SJListSectionControllerOperationsProtocol: class {
                 animated: Bool,
                 completion: ((Bool) -> Void)?)
     
+    /// Scroll to index
+    /// - Parameters:
+    ///   - index: index
+    ///   - position: Position
+    ///   - animated: is need animation
+    func scroll(to index: Int,
+                position: UICollectionViewScrollPosition,
+                animated: Bool)
+    
 }
 
 // MARK: - Default Implementations and Extra Methods
@@ -151,6 +160,11 @@ public extension SJListSectionControllerOperationsProtocol {
 
 // MARK: - SJListSectionController + SJListSectionControllerOperationsProtocol
 extension SJListSectionController: SJListSectionControllerOperationsProtocol {
+    
+    public func scroll(to index: Int, position: UICollectionViewScrollPosition, animated: Bool) {
+        sjcollectionContext.scroll(to: self, at: index, scrollPosition: position, animated: animated)
+    }
+    
     
     public func reload(animated: Bool,
                        completion: ((Bool) -> Void)?) {
