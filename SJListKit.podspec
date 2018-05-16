@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'SJListKit'
-  s.version          = '1.3.0'
+  s.version          = '1.3.1'
   s.summary          = 'Handy wrapper for IGListKit'
 
   s.description      = <<-DESC
