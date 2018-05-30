@@ -139,19 +139,26 @@ extension SJSupplementaryProxy: ListSupplementaryViewSource {
     }
     
     public func viewForSupplementaryElement(ofKind elementKind: String, at index: Int) -> UICollectionReusableView {
+        
         guard let section = delegate,
             let kind = SJSupplementaryKind.init(with: elementKind),
-            let klass: UICollectionReusableView.Type = delegate?.type(for: kind),
             let `context` = context else {
                 fatalError("Can't work with supplementary. Check that context, section, kind and UICollectionReusableView class defined correctly")
         }
         
-        let reusableView = context.dequeueReusableSupplementaryView(ofKind: elementKind,
+        let reusableView: UICollectionReusableView
+        if let klass: UICollectionReusableView.Type = delegate?.type(for: kind) {
+            reusableView = context.dequeueReusableSupplementaryView(ofKind: elementKind,
                                                                     for: section,
                                                                     class: klass,
                                                                     at: index)
-        
-        section.configure(reusableView: reusableView, of: kind)
+            section.configure(reusableView: reusableView, of: kind)
+        } else {
+            reusableView = context.dequeueReusableSupplementaryView(ofKind: elementKind,
+                                                                    for: section,
+                                                                    class: UICollectionReusableView.self,
+                                                                    at: index)
+        }
         
         return reusableView
     }
