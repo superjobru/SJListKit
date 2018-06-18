@@ -31,6 +31,11 @@ public struct SJCollectionViewCellMovement {
     
     /// End index
     let to: Int
+    
+    public init(from: Int, to: Int) {
+        self.from = from
+        self.to = to
+    }
 }
 
 /// Protocol with operations' interfaces for section controller
