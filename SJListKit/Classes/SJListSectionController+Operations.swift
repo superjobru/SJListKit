@@ -71,7 +71,7 @@ public protocol SJListSectionControllerOperationsProtocol: class {
     ///   - position: Position
     ///   - animated: is need animation
     func scroll(to index: Int,
-                position: UICollectionViewScrollPosition,
+                position: UICollectionView.ScrollPosition,
                 animated: Bool)
     
 }
@@ -166,7 +166,7 @@ public extension SJListSectionControllerOperationsProtocol {
 // MARK: - SJListSectionController + SJListSectionControllerOperationsProtocol
 extension SJListSectionController: SJListSectionControllerOperationsProtocol {
     
-    public func scroll(to index: Int, position: UICollectionViewScrollPosition, animated: Bool) {
+    public func scroll(to index: Int, position: UICollectionView.ScrollPosition, animated: Bool) {
         sjcollectionContext.scroll(to: self, at: index, scrollPosition: position, animated: animated)
     }
     

@@ -36,9 +36,9 @@ public enum SJSupplementaryKind {
     
     init?(with string: String) {
         switch string {
-        case UICollectionElementKindSectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             self = .footer
-        case UICollectionElementKindSectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             self = .header
         default:
             return nil
@@ -128,11 +128,11 @@ extension SJSupplementaryProxy: ListSupplementaryViewSource {
         var kinds: [String] = []
         
         if delegate?.type(for: .footer) != nil {
-            kinds.append(UICollectionElementKindSectionFooter)
+            kinds.append(UICollectionView.elementKindSectionFooter)
         }
         
         if delegate?.type(for: .header) != nil {
-            kinds.append(UICollectionElementKindSectionHeader)
+            kinds.append(UICollectionView.elementKindSectionHeader)
         }
         
         return kinds
@@ -215,7 +215,7 @@ extension SJSupplementaryProxy: ListSupplementaryViewSource {
         section.configure(reusableView: reusableView, of: kind)
         
         var size = reusableView.systemLayoutSizeFitting(CGSize(width: context.containerSize.width,
-                                                               height: UILayoutFittingCompressedSize.height),
+                                                               height: UIView.layoutFittingCompressedSize.height),
                                                         withHorizontalFittingPriority: UILayoutPriority.required,
                                                         verticalFittingPriority: UILayoutPriority.fittingSizeLevel)
         size.height.round(.up)
