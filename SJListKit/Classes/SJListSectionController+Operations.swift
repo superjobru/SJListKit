@@ -31,6 +31,11 @@ public struct SJCollectionViewCellMovement {
     
     /// End index
     let to: Int
+    
+    public init(from: Int, to: Int) {
+        self.from = from
+        self.to = to
+    }
 }
 
 /// Protocol with operations' interfaces for section controller
@@ -66,7 +71,7 @@ public protocol SJListSectionControllerOperationsProtocol: class {
     ///   - position: Position
     ///   - animated: is need animation
     func scroll(to index: Int,
-                position: UICollectionViewScrollPosition,
+                position: UICollectionView.ScrollPosition,
                 animated: Bool)
     
 }
@@ -161,7 +166,7 @@ public extension SJListSectionControllerOperationsProtocol {
 // MARK: - SJListSectionController + SJListSectionControllerOperationsProtocol
 extension SJListSectionController: SJListSectionControllerOperationsProtocol {
     
-    public func scroll(to index: Int, position: UICollectionViewScrollPosition, animated: Bool) {
+    public func scroll(to index: Int, position: UICollectionView.ScrollPosition, animated: Bool) {
         sjcollectionContext.scroll(to: self, at: index, scrollPosition: position, animated: animated)
     }
     

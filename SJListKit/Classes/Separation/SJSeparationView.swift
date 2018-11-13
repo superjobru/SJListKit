@@ -48,7 +48,7 @@ public enum SJCollectionViewCellSeparatorStyle: Equatable {
 }
 
 /// Ability to draw a separation view
-public protocol SJSeparationView: class where Self: UIView {
+public protocol SJSeparationView: class {
     
     /// Set style of separation view
     ///
@@ -67,7 +67,7 @@ private var styleAssociatedKey: UInt8 = 0
 private var colorAssociatedKey: UInt8 = 0
 
 // MARK: - Default Implementation
-extension SJSeparationView {
+extension SJSeparationView where Self: UIView {
     typealias Separator = UIView
 
     // Separator

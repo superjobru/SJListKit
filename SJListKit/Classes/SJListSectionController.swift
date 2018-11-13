@@ -63,7 +63,7 @@ open class SJListSectionController: ListSectionController {
 
         var size = calculatableCell.contentView.systemLayoutSizeFitting(
             CGSize(width: sjcollectionContext.containerSize.width,
-                   height: UILayoutFittingCompressedSize.height),
+                   height: UIView.layoutFittingCompressedSize.height),
             withHorizontalFittingPriority: UILayoutPriority.required,
             verticalFittingPriority: UILayoutPriority.fittingSizeLevel
         )

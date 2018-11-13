@@ -66,7 +66,7 @@ import IGListKit
         return
     }
     
-    func selectItem(at index: Int, sectionController: ListSectionController, animated: Bool, scrollPosition: UICollectionViewScrollPosition) {
+    func selectItem(at index: Int, sectionController: ListSectionController, animated: Bool, scrollPosition: UICollectionView.ScrollPosition) {
         return
     }
     
@@ -106,7 +106,7 @@ import IGListKit
         return
     }
     
-    func scroll(to sectionController: ListSectionController, at index: Int, scrollPosition: UICollectionViewScrollPosition, animated: Bool) {
+    func scroll(to sectionController: ListSectionController, at index: Int, scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
         return
     }
     
